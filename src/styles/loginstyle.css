@@ -1,0 +1,33 @@
+.body{
+    
+    text-align: center;
+    background-size:cover;
+    background-position:center;
+    height:100vh;
+    padding:0 20px;
+    background-image:url('https://wallpaperaccess.com/full/254361.jpg')
+    
+}
+.header{
+    color: black;
+}
+form label{
+    font-weight: bold;
+    color: gray;
+}
+form input{
+    height: 25px;
+    width: 230px;
+    font-weight: bold;
+    border-radius: 7px;
+}
+form button{
+    color: white;
+    background-color: slategray;
+    width: 80px;
+    height: 40px;
+    border-radius: 15px;
+}
+form button:hover{
+    background-color: black;
+}
