@@ -5,15 +5,19 @@ import axios from "axios"
 function AddFight() {
 
     const handleAddFight=(e)=>{
-            e.preventDefault()
+            
             
             const data = new FormData(document.getElementById("addFlight"));
             
             const value = Object.fromEntries(data.entries());
 
-            axios.post('http://localhost:8080/addFlight',value).then((response)=>{
-                console.log(response.data)
+            axios.post('http://localhost:8080/flight/addFlight',value).then((response)=>{
+                
             })
+
+            alert('added')
+            window.location.reload(false);
+
 
     }
 
@@ -33,16 +37,16 @@ function AddFight() {
                         <span><h3 >Add Flight</h3></span>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control item" name="flightid" placeholder="Enter Flight id" />
+                        <input type="text" class="form-control item" name="flightId" placeholder="Enter Flight id" />
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control item" name="flightname" placeholder="Enter Flight name" />
+                        <input type="text" class="form-control item" name="flightName" placeholder="Enter Flight name" />
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control item" name="orgin" placeholder="Orgin" />
+                        <input type="text" class="form-control item" name="sourceAirport" placeholder="Orgin" />
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control item" name="destination" placeholder="Destination" />
+                        <input type="text" class="form-control item" name="destinationAirport" placeholder="Destination" />
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control item" name="price" placeholder="cost" />

@@ -9,7 +9,7 @@ function ViewFlights() {
 
     
     useEffect(()=>{
-        const url='http://localhost:8080/viewFlight'
+        const url='http://localhost:8080/flight/viewFlight'
         axios.get(url).then((response)=>{
             setflights(response.data)
             console.log(flights)
