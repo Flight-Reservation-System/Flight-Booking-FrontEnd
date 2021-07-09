@@ -1,56 +1,82 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Table } from 'react-bootstrap'
+import '../styles/viewflights.css'
 
 function ViewFlights() {
 
     const [flights, setflights] = useState([])
-    
 
-
-    
-    useEffect(()=>{
-        const url='http://localhost:8080/flight/viewFlight'
-        axios.get(url).then((response)=>{
+    const refreshList=()=>{
+        const url = 'http://localhost:8080/flight/viewFlight'
+        axios.get(url).then((response) => {
             setflights(response.data)
-            console.log(flights)
-        })
-
-    },[])
-
-
-    const deleteFlight=(flightId)=>{
-        let url=`http://localhost:8080/deleteFlight/${flightId}`
-        axios.delete(url).then(()=>{
-            console.log('deleted')
         })
     }
 
 
-   
+   useEffect(()=>{
+       refreshList()
+   },[])
+
+
+    const deleteFlight = (e) => {
+
+        let flightId = e.target.value
+        console.log(flightId)
+        let url = `http://localhost:8080/flight/deleteFlight/${flightId}`
+        axios.delete(url).then((res) => {
+            console.log(res.data)
+        })
+        refreshList()
+        
+    }
+
+
+
 
     return (
-        <div>
+        <div >
 
             <h1>Flights Scheduled</h1>
 
-            
-            {
-                flights.map((flight)=>{
-                    return(
-                        <div className="card" style={{color:"black"}}  >
-                            {flight.flightId}<br/>
-                            {flight.flightname}<br/>
-                            {flight.orgin}{flight.destination}<br/>
-                            {flight.date}<br/>
-                            {flight.depatureHour}{flight.depatureMinutes}<br/>
-                            {flight.arrivalHour}{flight.arrivalMinute}<br/>
-                            {flight.price}<br/>
-                            <button onClick={deleteFlight(flight.flightId)}>Delete Flight</button>
-                        </div>
-                    )
-                })
-            }
-        </div>
+            <Table striped bordered hover variant="dark">
+                <thead>
+                    <tr>
+                        <th>FlightId</th>
+                        <th>Flight Name</th>
+                        <th>Orgin</th>
+                        <th>Destination</th>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                        <th>----</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        flights.map((flight)=>{
+                            return(
+                                <tr key={flight.flightId}>
+                                <td>{flight.flightId}</td>
+                                <td>{flight.flightName}</td>
+                                <td>{flight.sourceAirport}</td>
+                                <td>{flight.destinationAirport}</td>
+                                <td>{flight.departureHour}:{flight.departureMinute}</td>
+                                <td>{flight.arrivalHour}:{flight.arrivalMinute}</td>
+                                <td>{flight.price}</td>
+                                <td> {flight.date}</td>
+                                <td> <button className="danger" value={flight.flightId} onClick={deleteFlight}>Delete</button></td>
+                                </tr>
+                            )
+                        })
+                    }
+                </tbody>
+            </Table>
+
+    </div>
+        
     )
 }
 

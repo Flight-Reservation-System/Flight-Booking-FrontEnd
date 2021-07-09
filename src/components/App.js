@@ -29,9 +29,9 @@ function App() {
      
   </Router> */}
 
-  <AddFight/>
+  {/* <AddFight/> */}
 
-  {/* <ViewFlights/> */}
+  <ViewFlights/>
 
 
   </div>

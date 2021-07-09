@@ -15,8 +15,7 @@ function AddFight() {
                 
             })
 
-            alert('added')
-            window.location.reload(false);
+            
 
 
     }
