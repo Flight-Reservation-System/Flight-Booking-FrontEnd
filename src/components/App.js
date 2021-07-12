@@ -8,6 +8,7 @@ import Registration from './Registration';
 import Booking from './Booking';
 import AddFight from './AddFight';
 import ViewFlights from './ViewFlights';
+import MainMenu from './MainMenu';
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
   return (
 
     <div>
-    {/* <Router>
+    <Router>
     <div>
       
           <Switch>
@@ -24,14 +25,17 @@ function App() {
               <Route exact path='/login' component={Login}/>
               <Route exact path='/register' component={Registration}/>
               <Route exact path='/booking' component={Booking}/>
+              <Route exact path='/mainMenu' component={MainMenu}/>
+              <Route exact  path='/addflight' component={AddFight}/>
+              <Route exact  path='/viewflight' component={ViewFlights}/>
           </Switch>
         </div>
      
-  </Router> */}
+  </Router>
 
-  {/* <AddFight/> */}
+ 
 
-  <ViewFlights/>
+
 
 
   </div>

@@ -1,66 +1,167 @@
-import React from 'react'
-import axios from "axios"
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import '../styles/registration.css'
-import { Navbar, Container, Nav } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom';
 
 
-function Registration() {
+function Validregister(){
+const form = document.getElementById('form');
+const[name,setname]=useState("");
+const[uname,setuname]=useState("");
+const[email,setemail]=useState("");
+const[phone,setphone]=useState("");
+const[pass,setpass]=useState("");
+let history = useHistory();
 
-    const handleRegister=(e)=>{
-        e.preventDefault()
+
+function handleRegister(e){
+    e.preventDefault();
+    checkInputs();
+    
+
+    if(name!=="" && uname!=="" && email!=="" && phone!=="" && pass!==""){
+
         const data={
-            fullName:document.registerform.name.value,
-            userName:document.registerform.username.value,
-            emailId:document.registerform.email.value,
-            phoneNumber:document.registerform.phone.value,
-            password:document.registerform.password.value
+            fullName:name,
+            userName:uname,
+            emailId:email,
+            phoneNumber:phone,
+            password:pass
         }
 
-        axios.post('http://localhost:8080/users/register',data).then((res)=>console.log(res.data))
+        axios.post('http://localhost:8080/users/register',data).then((res)=>{
+        if(res.data==="SUCCESS"){
+            history.push("./login")
+        }else{
+            alert("Failed")
+        }
+    })
+    }
+    
 }
 
+function checkInputs() {
+	
+    const fnamevalue =  document.getElementById('fname').value.trim();
+	const usernameValue =  document.getElementById('username').value.trim();
+	const emailValue = document.getElementById('email').value.trim();
+    const numbervalue= document.getElementById('number').value.trim();
+	const passwordValue = document.getElementById('password').value.trim();
+	
 
-    return (
-        <div className="container-fluid">
-            <Navbar collapseOnSelect expand="lg">
-                <Container style={{ fontFamily: 'Brush Script MT', fontSize: '40px' }}>
-                    <Navbar.Brand href="#home"><h1 style={{ fontSize: '90px' }}>FlightiGo</h1></Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
 
-                        </Nav>
-                        <Nav>
-                            <Nav.Link className="home-nav">
-                                Home
-                            </Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-            <div className="registrationbody" style={{ float: 'right' }}>
+    if(fnamevalue === '') {
+		setErrorFor( document.getElementById('fname'), 'Name cannot be blank');
+	} else {
+		setSuccessFor( document.getElementById('fname'));
+        setname(fnamevalue);
+	}
+	
+	if(usernameValue === '') {
+		setErrorFor( document.getElementById('username'), 'Username cannot be blank');
+	} else {
+		setSuccessFor( document.getElementById('username'));
+        setuname(usernameValue);
+	}
+	
+	if(emailValue === '') {
+		setErrorFor(document.getElementById('email'), 'Email cannot be blank');
+	} else if (!isEmail(emailValue)) {
+		setErrorFor(document.getElementById('email'), 'Not a valid email');
+	} else {
+		setSuccessFor(document.getElementById('email'));
+        setemail(emailValue);
 
-                <h1 className="heading">Sign Up</h1>
+	}
+    if(numbervalue === '') {
+		setErrorFor(document.getElementById('number'), 'Phone Numbercannot be blank');
+	} else {
+		setSuccessFor(document.getElementById('number'));
+        setphone(numbervalue);
+	}
+	
+	if(passwordValue === '') {
+		setErrorFor(document.getElementById('password'), 'Password cannot be blank');
+	} else {
+		setSuccessFor(document.getElementById('password'));
+        setpass(passwordValue);
+	}
+	
 
-                <form name="registerform">
-
-                    <input className="register-label" type="text" name="name" placeholder="Full name" /><br />
-
-                    <input className="register-label" type="text" name="username" placeholder="Username" /><br />
-
-                    <input className="register-label" type="email" name="email" placeholder="Email" /><br />
-
-                    <input className="register-label" type="phone" name="phone" placeholder="Phone number" /><br />
-
-                    <input className="register-label" type="password" name="password" placeholder="Password" /> <br />
-                </form>
-                <div >
-                    <button className="button" onClick={handleRegister} >Register</button>
-                </div>
-            </div>
-        </div>
-    )
-
+    
 }
 
-export default Registration;
+function setErrorFor(input, message) {
+	const formControl = input.parentElement;
+	const small = formControl.querySelector('small');
+	formControl.className = 'form-control error';
+	small.innerText = message;
+}
+
+function setSuccessFor(input) {
+	const formControl = input.parentElement;
+	formControl.className = 'form-control success';
+}
+	
+function isEmail(email) {
+	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+}
+
+return(
+            
+<div className='noob'>
+<div class="container news">
+	
+	<div class="headers">
+		<h2>Create Account</h2>
+	</div>
+	<form id="form" class="form" name="registerform">
+    <div class="form-control">
+			<label for="fullname">Name</label>
+			<input type="text" placeholder="Your Name" id="fname" />
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-exclamation-circle"></i>
+			<small>Error message</small>
+		</div>
+        
+		<div class="form-control">
+			<label for="username">Username</label>
+			<input type="text" placeholder="flighto" id="username" />
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-exclamation-circle"></i>
+			<small>Error message</small>
+		</div>
+		<div class="form-control">
+			<label for="username">Email</label>
+			<input type="email" placeholder="flighto@flighto.com" id="email" />
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-exclamation-circle"></i>
+			<small>Error message</small>
+		</div>
+        <div class="form-control">
+			<label for="number">Phone</label>
+			<input type="text" placeholder="florinpop17" id="number" />
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-exclamation-circle"></i>
+			<small>Error message</small>
+		</div>
+		<div class="form-control">
+			<label for="username">Password</label>
+			<input type="password" placeholder="Password" id="password"/>
+			<i class="fas fa-check-circle"></i>
+			<i class="fas fa-exclamation-circle"></i>
+			<small>Error message</small>
+		</div>
+		
+		<button  onClick={handleRegister} >Submit</button>
+	</form>
+</div>
+</div>
+
+
+
+    );
+
+
+}
+export default Validregister;

@@ -5,6 +5,7 @@ import { Navbar, Container, Nav } from 'react-bootstrap'
 
 
 
+
 const Landing = () => {
 
     let history = useHistory();
@@ -12,11 +13,11 @@ const Landing = () => {
     return (
         <div>
 
-
+           
             <header id="showcase">
                 <Navbar collapseOnSelect expand="lg" >
                     <Container>
-                        <Navbar.Brand><h1>FlightGo</h1></Navbar.Brand>
+                        <Navbar.Brand><h1 style={{color:"white"}}>FlightGo</h1></Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto">

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Table } from 'react-bootstrap'
 import '../styles/viewflights.css'
+import Navbar from './NavBar'
 
 function ViewFlights() {
 
@@ -23,12 +24,19 @@ function ViewFlights() {
     const deleteFlight = (e) => {
 
         let flightId = e.target.value
-        console.log(flightId)
-        let url = `http://localhost:8080/flight/deleteFlight/${flightId}`
-        axios.delete(url).then((res) => {
-            console.log(res.data)
+        let confirm=window.confirm("are you sure?")
+        if(confirm){
+            let url = `http://localhost:8080/flight/deleteFlight/${flightId}`
+            axios.delete(url).then((res) => {
+            refreshList()
         })
-        refreshList()
+        }else{
+            alert("Delete Cancelled")
+        }
+       
+
+        
+        
         
     }
 
@@ -37,6 +45,7 @@ function ViewFlights() {
 
     return (
         <div >
+            <Navbar/>
 
             <h1>Flights Scheduled</h1>
 
