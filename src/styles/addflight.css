@@ -1,23 +1,19 @@
-body{
-    background-color: 	#999999;
-}
-
-.date{
-    border-radius:8px ;
-}
 
 .registration-form{
 	padding: 50px 0;
+    background-image: url("https://i.pinimg.com/originals/75/68/c0/7568c073cd74f441a11a9c6829c7957b.png");
+    font-family: Apple Chancery;
+    font-style: italic;
 }
 
 .registration-form form{
-    background-color: #999999;
+    background-color: transparent;
     max-width: 600px;
     margin: auto;
     padding: 50px 70px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+   border-radius: 30px;
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
 }
 
 .registration-form .form-icon{
@@ -50,7 +46,9 @@ body{
     margin-top: 20px;
 }
 
-
+::placeholder{
+    font-style: italic;
+}
 
 
 

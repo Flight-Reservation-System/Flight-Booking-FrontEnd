@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styles/registration.css'
+import '../styles/validregister.css'
 import { useHistory } from 'react-router-dom';
 
 
@@ -118,7 +118,7 @@ return(
 	<form id="form" class="form" name="registerform">
     <div class="form-control">
 			<label for="fullname">Name</label>
-			<input type="text" placeholder="Your Name" id="fname" />
+			<input type="text" placeholder="Your name" id="fname" />
 			<i class="fas fa-check-circle"></i>
 			<i class="fas fa-exclamation-circle"></i>
 			<small>Error message</small>
@@ -126,7 +126,7 @@ return(
         
 		<div class="form-control">
 			<label for="username">Username</label>
-			<input type="text" placeholder="flighto" id="username" />
+			<input type="text" placeholder="Username" id="username" />
 			<i class="fas fa-check-circle"></i>
 			<i class="fas fa-exclamation-circle"></i>
 			<small>Error message</small>
@@ -140,7 +140,7 @@ return(
 		</div>
         <div class="form-control">
 			<label for="number">Phone</label>
-			<input type="text" placeholder="florinpop17" id="number" />
+			<input type="text" placeholder="Mobile" id="number" />
 			<i class="fas fa-check-circle"></i>
 			<i class="fas fa-exclamation-circle"></i>
 			<small>Error message</small>

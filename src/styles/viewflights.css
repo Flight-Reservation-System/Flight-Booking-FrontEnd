@@ -1,6 +1,4 @@
-body{
-    background-image: url('https://images.pexels.com/photos/1309644/pexels-photo-1309644.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
-}
+
 .card{
     color: black;
     width: 380px;
@@ -13,10 +11,6 @@ body{
     font-size: small;
     width: 50px;
 
-}
-.datetime{
-    font-weight: lighter;
-    font-size: 10px;
 }
 
 

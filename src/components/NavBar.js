@@ -29,8 +29,8 @@ function Navbar() {
 
     return ( < >
         <
-nav className = "navbar" >
-        <div className = "navbar-container" >
+nav className = "navbar active" >
+        <div className = "navbar-container-fluid flight">
         <Link to = "/mainMenu"
         className = "navbar-logo"
         onClick = { closeMobileMenu } >
@@ -44,24 +44,31 @@ nav className = "navbar" >
 
         <li className = 'nav-item' >
 
-        <Link to = '/addflight'
+        <Link to = '/AddFlights'
         className = 'nav-links'
         onCLick = { closeMobileMenu } > Add Flights </Link>  </li >
         <li className = 'nav-item' >
 
-        < Link to = '/viewflight'
+        < Link to = '/ViewFlights'
         className = 'nav-links'
         onCLick = { closeMobileMenu } > View Flights </Link>  </li>
          <li className = 'nav-item' >
 
-        <Link to = '/searchflight'
+        <Link to = '/searchFlights'
         className = 'nav-links'
         onCLick = { closeMobileMenu } > Search Flights </Link>  </li > 
         < li className = 'nav-item' >
 
-        <Link to = '/bookFlights'
+        <Link to = '/BookFlights'
         className = 'nav-links-mobile'
-        onCLick = { closeMobileMenu } > Book Flights </Link> </li > </ul>   </div>
+        onCLick = { closeMobileMenu } > Book Flights </Link> </li >
+        < li className = 'nav-item' >
+
+        <Link to = '/'
+        className = 'nav-links'
+        onCLick = { closeMobileMenu } > Logout </Link>  
+        </li > 
+         </ul>   </div>
 
         </nav>  </>
     )

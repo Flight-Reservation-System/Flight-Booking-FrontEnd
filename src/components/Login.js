@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import '../styles/loginstyle.css'
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import auth from './auth';
 
 
 
-function Login() {
+function Login(props) {
     
     const [username,setUsername]=useState("");
     const [password,setPassword]=useState("");
@@ -50,8 +51,9 @@ function Login() {
 
         axios.post('http://localhost:8080/users/login', data).then((res) => {
             if (res.data) {
-                
-                history.push("./mainMenu");
+                auth.login(() => {
+                    props.history.push("/mainMenu");
+                  });
             } else {
                 alert("Invalid username or password");
             }
@@ -76,24 +78,24 @@ function Login() {
                 <title>Fullscreen Responsive Login Page</title>
 
             </head>
-            <section>
+            <section className="login-sec">
                 <div class="imgBx">
-                    <img src="https://ae01.alicdn.com/kf/HTB1B5lWNXXXXXafapXXq6xXFXXXA/Retro-World-War-II-fighter-Airplane-propeller-Movie-posters-vintage-print-Paper-Paint-Wall-HD-Crafts.jpg" />
+                    <img src="https://www.teahub.io/photos/full/4-40474_earth-wallpaper-hd.jpg" />
                 </div>
                 <div class="contentBx"  >
                     <div class="formBx" >
                         <h2>Login</h2>
                         <form name="loginfrom">
                             <div class="inputBx">
-                                <span>Username</span>
+                                <span style={{fontSize:'25px'}}>Username</span>
                                 <input type="text" name="username" onChange={handleUsername} />{userErr?<div class='mesg'> <span style={{fontFamily: 'Brush Script MT',margin:'0px'}}>-Too Short..!</span></div> :""}
                             </div>
                             <div class="inputBx">
-                                <span>Password</span>
+                                <span style={{fontSize:'25px'}}>Password</span>
                                 <input type="Password" name="password" onChange={handlePassword} /> {PassErr?<span style={{fontFamily: 'Brush Script MT',margin:'0px'}}>-Too Short..!</span>:""}
                             </div>
                             <div class="remember">
-                                <label><input type="checkbox" name="" />Remember me</label>
+                                <label style={{fontSize:'18px'}}><input type="checkbox" name="" />Remember me</label>
                             </div>
                             <div class="inputBx">
                                 <input type="submit" value="Sign in" onClick={handleClick} />

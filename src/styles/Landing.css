@@ -1,16 +1,4 @@
-*{
-    margin:0;
-    padding:0;
-  }
-  
-  body{
-    margin:0;
-    
-    font-size:17px;
-    color:whitesmoke;
-    line-height:2;
-  }
-  
+
   #showcase{
     font-family: Brush Script MT, "Helvetica Neue", Helvetica, sans-serif;
     background-image:url('https://wallpaperaccess.com/full/254361.jpg');

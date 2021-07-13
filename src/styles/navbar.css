@@ -1,4 +1,4 @@
-.navbar {
+.active {
     background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
     height: 80px;
     display: flex;
@@ -10,7 +10,7 @@
     z-index: 999;
 }
 
-.navbar-container {
+.flight {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,13 +35,13 @@
 }
 
 .nav-menu {
-    display: grid;
+    display: inherit;
     grid-template-columns: repeat(4, auto);
     grid-gap: 10px;
     list-style: none;
     text-align: center;
     width: 60vw;
-    justify-content: end;
+    justify-content: right;
     margin-right: 2rem;
 }
 
