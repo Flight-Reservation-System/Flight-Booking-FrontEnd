@@ -9,6 +9,7 @@ import Booking from './Booking';
 import AddFight from './AddFight';
 import ViewFlights from './ViewFlights';
 import MainMenu from './MainMenu';
+import SearchFlight from './SearchFlight';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
               <Route exact path='/mainMenu' component={MainMenu}/>
               <Route exact  path='/addflight' component={AddFight}/>
               <Route exact  path='/viewflight' component={ViewFlights}/>
+              <Route exact  path='/searchflight' component={SearchFlight}/>
           </Switch>
         </div>
      

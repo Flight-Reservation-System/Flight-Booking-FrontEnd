@@ -54,7 +54,7 @@ nav className = "navbar" >
         onCLick = { closeMobileMenu } > View Flights </Link>  </li>
          <li className = 'nav-item' >
 
-        <Link to = '/searchFlights'
+        <Link to = '/searchflight'
         className = 'nav-links'
         onCLick = { closeMobileMenu } > Search Flights </Link>  </li > 
         < li className = 'nav-item' >
