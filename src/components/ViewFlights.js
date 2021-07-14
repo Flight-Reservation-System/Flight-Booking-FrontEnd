@@ -47,7 +47,7 @@ function ViewFlights() {
         <div >
             <Navbar/>
 
-            <h1 style={{fontFamily:'Apple chancery',fontStyle:'italic'}}>Flights Scheduled</h1>
+            <h1>Flights Scheduled</h1>
 
             <Table striped bordered hover variant="dark">
                 <thead>
@@ -56,10 +56,11 @@ function ViewFlights() {
                         <th>Flight Name</th>
                         <th>Orgin</th>
                         <th>Destination</th>
-                        <th>Departure</th>
-                        <th>Arrival</th>
+                        <th>Departure<br/>
+                        <div className="datetime">YYYY-MM-DD</div></th>
+                        <th>Arrival<br/>
+                        <div className="datetime">YYYY-MM-DD</div></th>
                         <th>Price</th>
-                        <th>Date</th>
                         <th>----</th>
                     </tr>
                 </thead>
@@ -72,10 +73,14 @@ function ViewFlights() {
                                 <td>{flight.flightName}</td>
                                 <td>{flight.sourceAirport}</td>
                                 <td>{flight.destinationAirport}</td>
-                                <td>{flight.departureHour}:{flight.departureMinute}</td>
-                                <td>{flight.arrivalHour}:{flight.arrivalMinute}</td>
+                                <td>
+                                    {flight.depatureDate}<br/>
+                                    {flight.departureHour}:{flight.departureMinute}
+                                </td>
+                                <td>
+                                {flight.arrivalDate}<br/>
+                                    {flight.arrivalHour}:{flight.arrivalMinute}</td>
                                 <td>{flight.price}</td>
-                                <td> {flight.date}</td>
                                 <td> <button className="danger" value={flight.flightId} onClick={deleteFlight}>Delete</button></td>
                                 </tr>
                             )

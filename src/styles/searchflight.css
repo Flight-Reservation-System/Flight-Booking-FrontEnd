@@ -20,3 +20,9 @@
         margin-right: 450px;
     
   }
+  .button{
+    width: 100px;
+    margin-top: 3px;
+    background-color: lightblue;
+    border-radius: 15px;
+  }

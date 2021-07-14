@@ -16,7 +16,7 @@ function AddFlights() {
             const value = Object.fromEntries(data.entries());
 
             axios.post('http://localhost:8080/flight/addFlight',value).then((response)=>{
-               if(response.data=="SUCCESS"){
+               if(response.data==="SUCCESS"){
                    alert("flight added")
                    setadd(add+1)
                }else{

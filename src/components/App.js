@@ -2,7 +2,7 @@ import AddFlights from './AddFlights';
 import ViewFlights from './ViewFlights';
 import Booking from './Booking'
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import Login from './Login';
 import Landing from './Landing';

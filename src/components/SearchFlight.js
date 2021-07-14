@@ -100,7 +100,7 @@ function SearchFlight() {
             <div style={{ color: "black" }} className="container row">
                 <div className="col"><Select options={orgins} placeholder="From" onChange={(e) => { setorgin(e.value) }} /></div>
                 <div className="col"><Select options={destinations} placeholder="To" onChange={(e) => { setdestination(e.value) }} /></div>
-                <div className="col"><button style={{ backgroundColor: "lightblue", width: "350px" }} onClick={handleSearch}>Search</button></div>
+                <div className="col "><button className="button"  onClick={handleSearch}>Search</button></div>
                 <br/><br/><br/>
                 {
                     result.map((flight)=>{
@@ -128,7 +128,7 @@ function SearchFlight() {
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                            <i class="fas fa-passport"></i> <Button size="small"> Book Now  </Button>
+                            <i class="fas fa-passport"></i> <Button size="small"  > Book Now  </Button>
                             </CardActions>
                             <br/>
                         </Card>
