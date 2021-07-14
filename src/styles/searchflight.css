@@ -20,6 +20,9 @@
         margin-right: 450px;
     
   }
+  .cols{
+    width: 400px;
+  }
   .button{
     width: 100px;
     margin-top: 3px;

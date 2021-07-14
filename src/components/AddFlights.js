@@ -3,10 +3,15 @@ import '../styles/addflight.css'
 import axios from "axios"
 import NavBar from './NavBar'
 import Footer from './Footer'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function AddFlights() {
 
+    const [depaturedate,setdepaturedate] = useState(new Date())
+    const [arrivaldate, setarrivaldate] = useState(new Date())
     const [add, setadd] = useState(0)
+
 
     const handleAddFight=(e)=>{
             
@@ -15,8 +20,16 @@ function AddFlights() {
             
             const value = Object.fromEntries(data.entries());
 
-            axios.post('http://localhost:8080/flight/addFlight',value).then((response)=>{
-               if(response.data==="SUCCESS"){
+            
+
+            const finalData={...value,arrivalDate:arrivaldate,depatureDate:depaturedate}
+           
+            console.log(finalData)
+
+            
+
+            axios.post('http://localhost:8080/flight/addFlight',finalData).then((response)=>{
+               if(response.data=="SUCCESS"){
                    alert("flight added")
                    setadd(add+1)
                }else{
@@ -36,11 +49,7 @@ function AddFlights() {
         
         <div>
             <NavBar/>
-            <head>
-                <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet" />
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-                <link rel="stylesheet" href="assets/css/style.css" />
-            </head>
+            
 
             <div class="registration-form">
                 <form name="addflightform" id="addFlight">
@@ -63,16 +72,15 @@ function AddFlights() {
                     <div class="form-group">
                         <input type="text" className="form-control item" name="price" placeholder="cost" />
                     </div>
-
-                    <h6>Date</h6>
-                    <div className="form-group">
-                        <input type="text" class="form-control item" name="date" placeholder="DD-MM-YYYY" />
+                    <div class="form-group">
+                        <input type="text" className="form-control item" name="distance" placeholder="distance in km" />
                     </div>
                     <div className="container">
                         <div className="row">
                             <div className="col">
                                 <h6 style={{ textAlign: "center" }}>Departure</h6>
                                 <div className="form-group">
+                                     <DatePicker className="date" selected={depaturedate} onChange={(depature)=>setdepaturedate(depature)}/><br/><br/>
                                     <input type="number" max="24" min="0" class="form-control item" name="departureHour" placeholder="Hour" />
                                     <input type="number" max="60" min="0" class="form-control item" name="departureMinute" placeholder="Minutes" />
                                 </div>
@@ -80,13 +88,14 @@ function AddFlights() {
                             <div className="col">
                                 <h6 style={{ textAlign: "center" }}>Arrival</h6>
                                 <div className="form-group">
+                                    <DatePicker className="date" selected={arrivaldate} onChange={(arrival)=>setarrivaldate(arrival)}/><br/><br/>
                                     <input type="number" max="24" min="0" class="form-control item" name="arrivalHour" placeholder="Hour" />
                                     <input type="number" max="60" min="0" class="form-control item" name="arrivalMinute" placeholder="Minutes" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="form-group">
+                    <div className="form-group" style={{textAlign:"center"}}>
                         <button type="button" className="btn btn-block create-account" onClick={handleAddFight}>Add Flight</button>
                     </div>
                 </form>

@@ -80,7 +80,7 @@ function SearchFlight() {
     const handleSearch = () => {
         const url = `http://localhost:8080/flight/searchFlightByDestinationandSource/${destination}/${orgin}`
         axios.get(url).then((response) => {
-            console.log(response.data.length)
+            console.log(response.data)
             if(response.data.length===0){
                 alert("No Flights on selected routes")
             }else{setresult(response.data)
@@ -103,9 +103,11 @@ function SearchFlight() {
                 <div className="col "><button className="button"  onClick={handleSearch}>Search</button></div>
                 <br/><br/><br/>
                 {
-                    result.map((flight)=>{
+                    result.map((flightCo2)=>{
+                        const {flight,carbonDioxideEmission}=flightCo2
                         return(
-                            <Card className="root" variant="outlined">
+                            <div key={flight.flightId}>
+                             <Card className="root" variant="outlined" >
                             <CardContent>
                                 <Typography className="title" color="textSecondary" gutterBottom>
                                     {flight.flightName}
@@ -122,7 +124,11 @@ function SearchFlight() {
                                 
                                 </Typography>
                                 <Typography variant="body2" component="p">
-                                    <em>Booking Charges:</em><b>₹{flight.price}</b>
+                                    <div className="row rows">
+                                   <div className="col"> <em>Booking Charges:</em><b>₹{flight.price}</b></div>
+                                   <div className="col"><i class="fas fa-shoe-prints"></i><b>{carbonDioxideEmission.value} </b>{carbonDioxideEmission.unit} of CO2/ trip</div>
+
+                                    </div>
                                     <br />
                                     
                                 </Typography>
@@ -132,6 +138,7 @@ function SearchFlight() {
                             </CardActions>
                             <br/>
                         </Card>
+                        </div>
                         
                         )
                     })
