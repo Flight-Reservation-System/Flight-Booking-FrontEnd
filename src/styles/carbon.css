@@ -2,3 +2,12 @@
     color: red;
     cursor: pointer;
 }
+.main{
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+.value{
+    margin-left: 50px;
+    font-weight: bolder;
+}
