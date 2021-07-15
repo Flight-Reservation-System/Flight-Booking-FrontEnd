@@ -4,13 +4,14 @@ import Navbar from './NavBar'
 import Footer from './Footer'
 import Select from 'react-select'
 import '../styles/searchflight.css'
-import { makeStyles } from '@material-ui/core/styles';
+
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import CarbonFootprint from './CarbonFootprint'
 
 
 
@@ -80,7 +81,7 @@ function SearchFlight() {
     const handleSearch = () => {
         const url = `http://localhost:8080/flight/searchFlightByDestinationandSource/${destination}/${orgin}`
         axios.get(url).then((response) => {
-            console.log(response.data)
+            
             if(response.data.length===0){
                 alert("No Flights on selected routes")
             }else{setresult(response.data)
@@ -126,8 +127,9 @@ function SearchFlight() {
                                 <Typography variant="body2" component="p">
                                     <div className="row rows">
                                    <div className="col"> <em>Booking Charges:</em><b>₹{flight.price}</b></div>
-                                   <div className="col"><i class="fas fa-shoe-prints"></i><b>{carbonDioxideEmission.value} </b>{carbonDioxideEmission.unit} of CO2/ trip</div>
-
+                                   <div className="col">
+                                   <CarbonFootprint co2={carbonDioxideEmission} c={carbonDioxideEmission.equivalencies}/>
+                                    </div>
                                     </div>
                                     <br />
                                     
