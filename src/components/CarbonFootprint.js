@@ -6,7 +6,7 @@ import '../styles/carbon.css'
 function CarbonFootprint(props) {
     
     return (
-        <div className="c02" >
+        <div className="co2" >
             <Popup trigger={<div onMouseOver={(e)=>{e.target.className="red"}} onMouseOut={(e)=>e.target.className=""}> <i class="fas fa-shoe-prints"></i><b> {props.co2.value}</b> of CO2/{props.co2.unit} trip</div>}
             modal nested >
                 <div className="row main">
